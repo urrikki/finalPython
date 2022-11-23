@@ -18,12 +18,13 @@ quiJoue = True
 w = 1
 #variable nTour defini a 1                              
 nTour = 1 
-rOrJ = w                                     
+rOrJ = w
+modif=True                                     
 
 #definir afficher qui affichera tour par tour les croix, rond et messages (event)
 def afficher(event) :
     #attribuer les variables quiJoue , plateau , nTour en global 
-    global quiJoue, plateau, nTour ,w ,rOrJ
+    global quiJoue, plateau, nTour ,w ,rOrJ 
 
     
 
@@ -82,11 +83,9 @@ def afficher(event) :
                 gagner(0)
         #on acremente nTour de 1        
         nTour += 1
-        print(plateau[0])
-        print(plateau[1])
-        print(plateau[2])
+        
 
-modif=True
+
 def ai():
     global quiJoue, w , nTour , rOrJ , modif
     aJouer = False
@@ -97,7 +96,7 @@ def ai():
         w = 2
         rOrJ = w
 
-    print(rOrJ)
+    print(nTour, w )
     if rOrJ == 2 : 
         #first side
         if nTour < 3 and plateau[1][1] == 0:
@@ -114,7 +113,6 @@ def ai():
             if (plateau[0][0] + plateau[0][1]) == -2 or (plateau[0][0] + plateau[0][2]) == -2 or (plateau[0][1] + plateau[0][2]) == -2:
                 for i2 in range(0,3):
                     if plateau[0][i2] == 0:
-                        print("1")
                         dessin.create_oval(100*i2+8, 100*0+8, 100*i2+96, 100*0+96, width = 5, outline = '#b61b1c')
                         plateau[0][i2] = -1
                         message.configure(text='Aux tour des croix :')
@@ -125,7 +123,6 @@ def ai():
             if (plateau[1][0] + plateau[1][1]) == -2 or (plateau[1][0] + plateau[1][2]) == -2 or (plateau[1][1] + plateau[1][2]) == -2:
                 for i2 in range(0,3):
                     if plateau[1][i2] == 0:
-                        print("2")
                         dessin.create_oval(100*i2+8, 100*1+8, 100*i2+96, 100*1+96, width = 5, outline = '#b61b1c')
                         plateau[1][i2] = -1
                         message.configure(text='Aux tour des croix :')
@@ -136,7 +133,6 @@ def ai():
             if (plateau[2][0] + plateau[2][1]) == -2 or (plateau[2][0] + plateau[2][2]) == -2 or (plateau[2][1] + plateau[2][2]) == -2:
                 for i2 in range(0,3):
                     if plateau[2][i2] == 0:
-                        print("3")
                         dessin.create_oval(100*i2+8, 100*2+8, 100*i2+96, 100*2+96, width = 5, outline = '#b61b1c')
                         plateau[2][i2] = -1
                         message.configure(text='Aux tour des croix :')
@@ -148,7 +144,6 @@ def ai():
             if (plateau[0][0] + plateau[1][0]) == -2 or (plateau[0][0] + plateau[2][0]) == -2 or (plateau[1][0] + plateau[2][0]) == -2:
                 for i in range(0,3):
                     if plateau[i][0] == 0:
-                        print("4")
                         dessin.create_oval(100*0+8, 100*i+8, 100*0+96, 100*i+96, width = 5, outline = '#b61b1c')
                         plateau[i][0] = -1
                         message.configure(text='Aux tour des croix :')
@@ -159,7 +154,6 @@ def ai():
             if (plateau[0][1] + plateau[1][1]) == -2 or (plateau[0][1] + plateau[2][1]) == -2 or (plateau[1][1] + plateau[2][1]) == -2:
                 for i in range(0,3):
                     if plateau[i][1] == 0:
-                        print("5")
                         dessin.create_oval(100*1+8, 100*i+8, 100*1+96, 100*i+96, width = 5, outline = '#b61b1c')
                         plateau[i][1] = -1
                         message.configure(text='Aux tour des croix :')
@@ -170,7 +164,6 @@ def ai():
             if (plateau[0][2] + plateau[1][2]) == -2 or (plateau[0][2] + plateau[2][2]) == -2 or (plateau[1][2] + plateau[2][2]) == -2:
                 for i in range(0,3):
                     if plateau[i][2] == 0:
-                        print("6")
                         dessin.create_oval(100*2+8, 100*i+8, 100*2+96, 100*i+96, width = 5, outline = '#b61b1c')
                         plateau[i][2] = -1
                         message.configure(text='Aux tour des croix :')
@@ -186,7 +179,6 @@ def ai():
                             if plateau[i][i2] == 0:
                                 if d==True:
                                     d=False
-                                    print("7")
                                     dessin.create_oval(100*i2+8, 100*i+8, 100*i2+96, 100*i+96, width = 5, outline = '#b61b1c')
                                     plateau[i][i2] = -1
                                     message.configure(text='Aux tour des croix :')
@@ -201,7 +193,6 @@ def ai():
                     for i2 in range(0,3):
                         if (i == 0 and i2 == 2) or (i == 1 and i2 == 1) or (i == 2 and i2 == 0) :
                             if plateau[i][i2] == 0:
-                                print("8")
                                 dessin.create_oval(100*i2+8, 100*i+8, 100*i2+96, 100*i+96, width = 5, outline = '#b61b1c')
                                 plateau[i][i2] = -1
                                 message.configure(text='Aux tour des croix :')
@@ -214,7 +205,6 @@ def ai():
             if (plateau[0][0] + plateau[0][1]) == 2 or (plateau[0][0] + plateau[0][2]) == 2 or (plateau[0][1] + plateau[0][2]) == 2:
                 for i2 in range(0,3):
                     if plateau[0][i2] == 0:
-                        print("9")
                         dessin.create_oval(100*i2+8, 100*0+8, 100*i2+96, 100*0+96, width = 5, outline = '#b61b1c')
                         plateau[0][i2] = -1
                         message.configure(text='Aux tour des croix :')
@@ -226,7 +216,6 @@ def ai():
             if (plateau[1][0] + plateau[1][1]) == 2 or (plateau[1][0] + plateau[1][2]) == 2 or (plateau[1][1] + plateau[1][2]) == 2:
                 for i2 in range(0,3):
                     if plateau[1][i2] == 0:
-                        print("10")
                         dessin.create_oval(100*i2+8, 100*1+8, 100*i2+96, 100*1+96, width = 5, outline = '#b61b1c')
                         plateau[1][i2] = -1
                         message.configure(text='Aux tour des croix :')
@@ -238,7 +227,6 @@ def ai():
             if (plateau[2][0] + plateau[2][1]) == 2 or (plateau[2][0] + plateau[2][2]) == 2 or (plateau[2][1] + plateau[2][2]) == 2:
                 for i2 in range(0,3):
                     if plateau[2][i2] == 0:
-                        print("11")
                         dessin.create_oval(100*i2+8, 100*2+8, 100*i2+96, 100*2+96, width = 5, outline = '#b61b1c')
                         plateau[2][i2] = -1
                         message.configure(text='Aux tour des croix :')
@@ -250,7 +238,6 @@ def ai():
             if (plateau[0][0] + plateau[1][0]) == 2 or (plateau[0][0] + plateau[2][0]) == 2 or (plateau[1][0] + plateau[2][0]) == 2:
                 for i in range(0,3):
                     if plateau[i][0] == 0:
-                        print("13")
                         dessin.create_oval(100*0+8, 100*i+8, 100*0+96, 100*i+96, width = 5, outline = '#b61b1c')
                         plateau[i][0] = -1
                         message.configure(text='Aux tour des croix :')
@@ -261,7 +248,6 @@ def ai():
             if (plateau[0][1] + plateau[1][1]) == 2 or (plateau[0][1] + plateau[2][1]) == 2 or (plateau[1][1] + plateau[2][1]) == 2:
                 for i in range(0,3):
                     if plateau[i][1] == 0:
-                        print("14")
                         dessin.create_oval(100*1+8, 100*i+8, 100*1+96, 100*i+96, width = 5, outline = '#b61b1c')
                         plateau[i][1] = -1
                         message.configure(text='Aux tour des croix :')
@@ -272,7 +258,6 @@ def ai():
             if (plateau[0][2] + plateau[1][2]) == 2 or (plateau[0][2] + plateau[2][2]) == 2 or (plateau[1][2] + plateau[2][2]) == 2:
                 for i in range(0,3):
                     if plateau[i][2] == 0:
-                        print("15")
                         dessin.create_oval(100*2+8, 100*i+8, 100*2+96, 100*i+96, width = 5, outline = '#b61b1c')
                         plateau[i][2] = -1
                         message.configure(text='Aux tour des croix :')
@@ -289,7 +274,6 @@ def ai():
                             if (i == 0 and i2 == 0) or (i == 1 and i2 == 1) or (i == 2 and i2 == 2) :
                                 if d == True:
                                     d=False
-                                    print("16")
                                     dessin.create_oval(100*i2+8, 100*i+8, 100*i2+96, 100*i+96, width = 5, outline = '#b61b1c')
                                     plateau[i][i2] = -1
                                     message.configure(text='Aux tour des croix :')
@@ -306,7 +290,6 @@ def ai():
                             if plateau[i][i2] == 0:
                                 if d == True:
                                     d=False
-                                    print("17")
                                     print(i,i2)
                                     dessin.create_oval(100*i2+8, 100*i+8, 100*i2+96, 100*i+96, width = 5, outline = '#b61b1c')
                                     plateau[i][i2] = -1
@@ -319,7 +302,6 @@ def ai():
         if aJouer == False:
             if plateau[0][0] == 1 : 
                 if plateau[2][2] == 0:
-                    print("18")
                     dessin.create_oval(100*2+8, 100*2+8, 100*2+96, 100*2+96, width = 5, outline = '#b61b1c')
                     plateau[2][2] = -1
                     message.configure(text='Aux tour des croix :')
@@ -330,7 +312,6 @@ def ai():
         if aJouer == False:
             if plateau[2][2] == 1 :
                 if plateau[0][0] == 0:
-                    print("19")
                     dessin.create_oval(100*0+8, 100*0+8, 100*0+96, 100*0+96, width = 5, outline = '#b61b1c')
                     plateau[0][0] = -1
                     message.configure(text='Aux tour des croix :')
@@ -341,7 +322,6 @@ def ai():
         if aJouer == False:
             if plateau[0][2] == 1 : 
                 if plateau[2][0] == 0:
-                    print("20")
                     dessin.create_oval(100*0+8, 100*2+8, 100*0+96, 100*2+96, width = 5, outline = '#b61b1c')
                     plateau[2][0] = -1
                     message.configure(text='Aux tour des croix :')
@@ -352,7 +332,6 @@ def ai():
         if aJouer == False:
             if plateau[2][0] == 1 : 
                 if plateau[0][2] == 0:
-                    print("21")
                     dessin.create_oval(100*2+8, 100*0+8, 100*2+96, 100*0+96, width = 5, outline = '#b61b1c')
                     plateau[0][2] = -1
                     message.configure(text='Aux tour des croix :')
@@ -363,7 +342,6 @@ def ai():
         if aJouer == False:
             if plateau[0][1] == 1 : 
                 if plateau[2][1] == 0:
-                    print("22")
                     dessin.create_oval(100*1+8, 100*2+8, 100*1+96, 100*2+96, width = 5, outline = '#b61b1c')
                     plateau[2][1] = -1
                     message.configure(text='Aux tour des croix :')
@@ -374,7 +352,6 @@ def ai():
         if aJouer == False:
             if plateau[2][1] == 1 : 
                 if plateau[0][1] == 0:
-                    print("23")
                     dessin.create_oval(100*1+8, 100*0+8, 100*1+96, 100*0+96, width = 5, outline = '#b61b1c')
                     plateau[0][1] = -1
                     message.configure(text='Aux tour des croix :')
@@ -385,7 +362,6 @@ def ai():
         if aJouer == False:
             if plateau[1][0] == 1 : 
                 if plateau[1][2] == 0:
-                    print("24")
                     dessin.create_oval(100*2+8, 100*1+8, 100*2+96, 100*1+96, width = 5, outline = '#b61b1c')
                     plateau[1][2] = -1
                     message.configure(text='Aux tour des croix :')
@@ -396,7 +372,6 @@ def ai():
         if aJouer == False:
             if plateau[1][2] == 1 : 
                 if plateau[1][0] == 0:
-                    print("25")
                     dessin.create_oval(100*0+8, 100*1+8, 100*0+96, 100*1+96, width = 5, outline = '#b61b1c')
                     plateau[1][0] = -1
                     message.configure(text='Aux tour des croix :')
@@ -425,7 +400,6 @@ def ai():
             while plateau[i][i2] != 0 or (i == 0 and i2 == 0) or (i == 0 and i2 == 2) or (i == 2 and i2 == 0) or (i == 2 and i2 == 0) or (i == 2 and i2 == 2):
                 i=random.randint(0,2)
                 i2=random.randint(0,2)
-            print("26")
             dessin.create_oval(100*i2+8, 100*i+8, 100*i2+96, 100*i+96, width = 5, outline = '#b61b1c')
             plateau[i][i2] = -1
             message.configure(text='Aux tour des croix :')
@@ -448,10 +422,13 @@ def ai():
                 gagner(0)
         #on acremente nTour de 
         nTour += 1
-        print(rOrJ)  
-        print(plateau[0])
-        print(plateau[1])
-        print(plateau[2])
+    
+    elif rOrJ == 0 and nTour == 5:
+
+        dessin.create_line(100*1+8, 100*1+8, 100*1+96, 100*1+96, width = 5, fill = 'gold')
+        dessin.create_line(100*1+8, 100*1+96, 100*1+96, 100*1+8, width = 5, fill = 'gold')
+
+        
             
                             
 #definir la fonctin verif qui retourne une valeur en fonction du resultat du match
@@ -510,16 +487,18 @@ def gagner(a):
 def reinitialisation():
     
     #attribuer les variables quiJoue , plateau , nTour en global
-    global quiJoue, plateau, nTour,w
+    global quiJoue, plateau, nTour,w,rOrJ , modif
     #crée un tableau plateau [ [0, 0, 0],[0, 0, 0],[0, 0, 0]]
     plateau=[ [0, 0, 0],
               [0, 0, 0],
               [0, 0, 0]]
     #variable quiJoue , un boolen definis a True
     quiJoue = True
-    w = True
+    w = 1
     #variable nTour defini a 1                              
-    nTour = 1    
+    nTour = 1   
+    rOrJ = w
+    modif=True 
 
     #on affiche le message Aux tour des croix :
     message.configure(text='Aux tour des croix :')
