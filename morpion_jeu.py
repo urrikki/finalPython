@@ -96,7 +96,6 @@ def ai():
         w = 2
         rOrJ = w
 
-    print(nTour, w )
     if rOrJ == 2 : 
         #first side
         if nTour < 3 and plateau[1][1] == 0:
