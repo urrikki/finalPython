@@ -52,9 +52,9 @@ def afficher(event) :
         if (nTour >= 5) and (nTour <= 9):
             v=verif(plateau)
             if v == 1 or v == -1:
-                gagner(v)
+                gagner(v , w)
             elif v == 9:
-                gagner(0)
+                gagner(0 , w)
 
         nTour += 1
 
@@ -383,9 +383,9 @@ def ai():
         if (nTour >= 5) and (nTour <= 9):
             v=verif(plateau)
             if v == 1 or v == -1:
-                gagner(v)
+                gagner(v , w)
             elif v == 9:
-                gagner(0)
+                gagner(0 , w)
 
         nTour += 1
     
@@ -420,19 +420,18 @@ def verif(tableau):
             return -1
 
 #definirla fonction gagner qui renvoie une un message via showinfo par rapport au a que on lui donne
-def gagner(a):
+def gagner(a , w):
     if a == 1:
-        showinfo(title='Victoire',message='Les croix ont gagné !')
+        showinfo(title='Victoire',message='Le joueur 1 à gagné')
     elif a == -1:
-        print('ok')
-        if w == True:
-            showinfo(title='Victoire',message='Les ronds ont gagné !')
-        if w == False:
-            showinfo(title='Perdu',message='Le robot vous à battu')
+        if w == 1:
+            showinfo(title='Victoire',message='Le joueur 2 à gagné !')
+        if w == 2:
+           showinfo(title='Perdu',message='Le robot à gagné') 
     elif a == 0:
         if plateau == [[1,-1,1],[1,-1,1],[-1,1,-1]]:
                        showinfo(title='easter egg', message='Vous avez debloqué une égalité spéciale !')
-        if w == False:
+        elif w == 2:
             showinfo(title='Dommage ... ',message="Vous n'avez pas battu le robot !")
         else:
             showinfo(title='Egalité',message='Match nul !')
