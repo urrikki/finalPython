@@ -144,6 +144,7 @@ def ai():
                         aJouer = True
         
         if aJouer == False:
+            d= True
             if (plateau[0][0] + plateau[0][1]) == -2 or (plateau[0][0] + plateau[0][2]) == -2 or (plateau[0][1] + plateau[0][2]) == -2:
                 for i in range(0,3):
                     for i2 in range(0,3):
